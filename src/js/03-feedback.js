@@ -9,7 +9,6 @@ const STORAGE_KEY = 'feedback-form-state';
 const arrayData = storage.load(STORAGE_KEY) || {};
 
 if (arrayData) {
-  console.log(arrayData);
   emailValue.value = arrayData.email;
   textlValue.value = arrayData.message;
 }
