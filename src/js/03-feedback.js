@@ -20,8 +20,6 @@ input.addEventListener('submit', handleSubmit);
 function addLocalStor(e) {
   e.preventDefault();
   const data = {};
-  console.log(e.target.name);
-  console.log(e.target.value)
   data[e.target.name] = e.target.value;
   storage.save(STORAGE_KEY, data);
 }
