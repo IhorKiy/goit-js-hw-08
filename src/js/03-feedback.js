@@ -6,8 +6,8 @@ const emailValue = document.querySelector('input');
 const textlValue = document.querySelector('textarea');
 const STORAGE_KEY = 'feedback-form-state';
 
-// const arrayData = storage.load(STORAGE_KEY) || {};
 const arrayData = storage.load(STORAGE_KEY);
+const data = {};
 
 if (arrayData) {
   emailValue.value = arrayData.email;
@@ -19,7 +19,6 @@ input.addEventListener('submit', handleSubmit);
 
 function addLocalStor(e) {
   e.preventDefault();
-  const data = {};
   data[e.target.name] = e.target.value;
   storage.save(STORAGE_KEY, data);
 }
