@@ -9,29 +9,26 @@ const STORAGE_KEY = 'feedback-form-state';
 // const arrayData = storage.load(STORAGE_KEY) || {};
 const arrayData = storage.load(STORAGE_KEY);
 
-
 if (arrayData) {
   emailValue.value = arrayData.email;
   textlValue.value = arrayData.message;
 }
 
 input.addEventListener('input', throttle(addLocalStor, 500));
-input.addEventListener('submit', throttle(handleSubmit, 500));
+input.addEventListener('submit', handleSubmit);
 
 function addLocalStor(e) {
   e.preventDefault();
-  
-  arrayData[e.target.name] = e.target.value;
-  storage.save(STORAGE_KEY, arrayData);
+  const data = {};
+  console.log(e.target.name);
+  console.log(e.target.value)
+  data[e.target.name] = e.target.value;
+  storage.save(STORAGE_KEY, data);
 }
 
 function handleSubmit(e) {
   e.preventDefault();
-  const {
-    elements: { email, message },
-  } = e.currentTarget;
-  console.log(arrayData);
-  // console.log(`Email: ${email.value}, Message: ${message.value}`);
+  console.log(storage.load(STORAGE_KEY));
   e.currentTarget.reset();
-  storage.remove(STORAGE_KEY); 
+  storage.remove(STORAGE_KEY);
 }
